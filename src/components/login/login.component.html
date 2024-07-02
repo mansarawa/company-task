@@ -1,0 +1,64 @@
+<div class="container"  *ngIf="name === 'company'">
+    
+    <form [formGroup]="adminForm" (ngSubmit)="adminSubmit()">
+        <h1>Login As Company</h1>
+        <div class="items">
+            <label for="email">Email</label>
+            <input type="email" name="" formControlName="email" id="">
+            <div *ngIf="adminForm.get('email')?.invalid && adminForm.get('email')?.touched">Email is required</div>
+        </div>
+        <div class="items">
+            <label for="password">Password</label>
+            <input type="password" name="" formControlName="password" id="">
+            <div *ngIf="adminForm.get('password')?.invalid && adminForm.get('password')?.touched">Password is required</div>
+        </div>
+       
+        <button type="submit" class="btn">Submit</button><br>
+        <button type="button" (click)="navigateToRegister()" class="account">Not Hav'nt Account ?</button>
+    </form>
+    
+</div>
+
+<!-- manager -->
+<div class="container"  *ngIf="name === 'manager'">
+    
+    <form [formGroup]="managerForm" (ngSubmit)="managerSubmit()">
+        <h1>Login As Manager</h1>
+        <div class="items">
+            <label for="email">Email</label>
+            <input type="email" name="" formControlName="email" id="">
+            <div *ngIf="managerForm.get('email')?.invalid && managerForm.get('email')?.touched">Email is required</div>
+        </div>
+        <div class="items">
+            <label for="password">Password</label>
+            <input type="password" name="" formControlName="password" id="">
+            <div *ngIf="managerForm.get('password')?.invalid && managerForm.get('password')?.touched">Password is required</div>
+        </div>
+       
+        <button type="submit" class="btn">Submit</button><br>
+        <button type="button" (click)="navigateToRegister()" class="account">Not Hav'nt Account ?</button>
+    </form>
+    
+</div>
+
+<!-- user -->
+<div class="container"  *ngIf="name === 'user'">
+    
+    <form [formGroup]="userForm" (ngSubmit)="userSubmit()">
+        <h1>Login As User</h1>
+        <div class="items">
+            <label for="email">Email</label>
+            <input type="email" name="" formControlName="email" id="">
+            <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">Email is required</div>
+        </div>
+        <div class="items">
+            <label for="password">Password</label>
+            <input type="password" name="" formControlName="password" id="">
+            <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">Password is required</div>
+        </div>
+       
+        <button type="submit" class="btn">Submit</button><br>
+        <button type="button" (click)="navigateToRegister()" class="account">Not Hav'nt Account ?</button>
+    </form>
+    
+</div>

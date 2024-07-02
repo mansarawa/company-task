@@ -1,0 +1,55 @@
+
+<div class="container" *ngIf="name === 'manager'">
+    <h1>Manager</h1>
+  
+        <!-- <div>ID: {{ name.id }}</div> -->
+        <div>
+          <label>Name:</label>
+          <label >{{manager.name}}</label>
+        </div>
+        <div>
+          <label>Email:</label>
+          <label >{{manager.email}}</label>
+        </div>
+        <div>
+          <label>Role: </label>
+          <label >{{manager.role}}</label>
+        </div>
+        <div>
+          <label>Password: </label>
+          <label >{{manager.password}}</label>
+        </div>
+        <div>
+            <label>User Id:</label>
+            <label > {{manager.userId}}</label>
+          </div>
+          <div class="btndiv">
+        <button name="button" class="btn" (click)="navigateToCompany()">Go Back</button>
+        <button name="submit" class="btn" (click)="navigateToView(manager,'manager')">Update</button>
+    </div>
+  </div>
+  
+  <div class="container" *ngIf="name === 'user'">
+    <h1>User</h1>
+   
+      <div>
+        <label>Name:{{user.name}}</label> 
+        <label >{{user.name}}</label>
+      </div>
+      <div>
+        <label>Email: </label>
+        <label >{{user.email}}</label>
+      </div>
+      <div>
+        <label>Salary: </label> 
+        <label >{{user.salary}}</label>
+      </div>
+      <div>
+        <label>ManagerId: </label>
+        <label >{{user.managerId}}</label>
+      </div>
+      <button name="button" class="btn" (click)="navigateToCompany()">Go Back</button>
+      <button name="submit" class="btn" (click)="navigateToView(user,'user')">Update</button>
+     
+  </div>
+  

@@ -1,0 +1,86 @@
+<div class="container" *ngIf="type === 'admin'">
+  <h1>Admin</h1>
+  <form [formGroup]="adminUpdate" (ngSubmit)="adminSubmit()">
+      <div>
+          <label>Company Name:</label>
+          <input formControlName="companyname" type="text" />
+      </div>
+      <div>
+          <label>Address:</label>
+          <input formControlName="address" type="text" [placeholder]="item.address" />
+      </div>
+      <div>
+          <label>GST:</label>
+          <input formControlName="gst" type="text" [placeholder]="item.gst" />
+      </div>
+      <div>
+        <label >Password:</label>
+        <input type="password" formControlName="password" [placeholder]="item.password" id="">
+      </div>
+      <div>
+          <label>Admin Name:</label>
+          <input formControlName="adminname" type="text" [placeholder]="item.adminname" />
+      </div>
+      <div>
+          <label>Email:</label>
+          <input formControlName="email" type="text" [placeholder]="item.email" />
+      </div>
+      <div>
+        <label>Role: </label>
+        <input type="text" name="" [placeholder]="item.role" [disabled]="isDisable" id="">
+      </div>
+      <button type="button" class="btn" (click)="navigateToCompany()">Go Back</button>
+      <button type="submit" class="btn">Update</button>
+    
+  </form>
+</div>
+
+<div class="container" *ngIf="type === 'manager'">
+  <h1>Manager</h1>
+  <form [formGroup]="managerUpdate" (ngSubmit)="managerSubmit()">
+  <!-- <div>ID: {{ item.id }}</div> -->
+  <div>
+    <label>Name: </label>
+    <input type="text" formControlName="name" id="" [placeholder]="item.name">
+  </div>
+  <div>
+    <label>Email:</label>
+    <input type="text" formControlName="email" id="" [placeholder]="item.email">
+  </div>
+  <div>
+    <label>Role: </label>
+    <input type="text" name="" [placeholder]="item.role" [disabled]="isDisable" id="">
+  </div>
+  <div>
+    <label>Password: </label>
+    <input type="password" formControlName="password" [placeholder]="item.password" id="">
+  </div>
+  <button type="button" class="btn" (click)="navigateToCompany()">Go Back</button>
+  <button type="submit" class="btn">Update</button>
+</form>
+</div>
+
+<div class="container" *ngIf="type === 'user'">
+  <h1>User</h1>
+  <form [formGroup]="userUpdate" (ngSubmit)="userSubmit()">
+    <!-- <div>ID: {{ item.id }}</div> -->
+    <div>
+      <label>Name:</label> 
+      <input type="text" formControlName="name" id="">
+    </div>
+    <div>
+      <label>Email: </label>
+      <input type="text" formControlName="email" id="">
+    </div>
+    <div>
+      <label>Salary:</label> 
+      <input type="text" formControlName="salary" id="">
+    </div>
+    <div>
+      <label>ManagerId: </label>
+      <input type="text" formControlName="managerId" id="">
+    </div>
+    <button type="button" class="btn" (click)="navigateToCompany()">Go Back</button>
+    <button type="submit" class="btn">Update</button>
+    </form>
+</div>

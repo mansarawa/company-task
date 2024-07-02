@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="ndashboard">
+        <h1>WelCome To ABC Software</h1>
+     
+        <div class="btndiv">
+            <div class="company">
+            <a [routerLink]="['/register']" [queryParams]="{name: company}" class="btn">Register As Company</a>
+            <a [routerLink]="['/login']" [queryParams]="{name: company}" class="btn">Login As Company</a>
+        </div>
+        
+            <div class="footer">
+            <a [routerLink]="['/login']" [queryParams]="{name: manager}" class="btn">Login As Manager</a>
+            <a [routerLink]="['/login']" [queryParams]="{name: user}" class="btn">Login As User</a>
+        </div>
+
+        </div>
+    </div>
+</div>

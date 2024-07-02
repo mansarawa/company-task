@@ -1,0 +1,25 @@
+.container{
+    width: 100%;
+    display: flex;
+}
+.item{
+    width: 50%;
+}
+.item ul{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.item ul li{
+    list-style-type: none;
+    margin-right: 20px;
+    font-size: 20px;
+}
+.item ul li a{
+    color: black;
+    text-decoration: none;
+    
+}
+.btn{
+    cursor: pointer;
+}

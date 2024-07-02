@@ -1,0 +1,99 @@
+<div>
+    <div class="items">
+      <h1>
+        <label for="">Admin in Your Company </label>
+        <label for=""><a [routerLink]="['/register']" [queryParams]="{name: company}" class="btncreate">Create Admin</a></label>
+      </h1>
+      <table *ngIf="admins && admins.length" border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Company Name</th>
+            <th>Address</th>
+            <th>GST</th>
+            <th>Admin Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let admin of admins">
+            <td>{{ admin.id }}</td>
+            <td>{{ admin.companyname }}</td>
+            <td>{{ admin.address }}</td>
+            <td>{{ admin.gst }}</td>
+            <td>{{ admin.adminname }}</td>
+            <td class="btn">
+              <button type="button" class="view" (click)="navigateToView(admin, 'admin')">View</button>
+              <button type="button" class="delete" (click)="deleteAdmin(admin.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!admins || !admins.length">No admins found.</p>
+    </div>
+  
+    <div class="items">
+      <h1>
+        <label for="">Manager in Your Company </label>
+        <label for=""><a [routerLink]="['/register']" [queryParams]="{name: manager}" class="btncreate">Create Manager</a></label>
+      </h1>
+      <table *ngIf="managers && managers.length" border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let manager of managers">
+            <td>{{ manager.id }}</td>
+            <td>{{ manager.name }}</td>
+            <td>{{ manager.email }}</td>
+            <td>{{ manager.role }}</td>
+            <td class="btn">
+              <button type="button" class="view" (click)="navigateToView(manager, 'manager')">View</button> 
+              <button type="button" class="delete" (click)="deleteManager(manager.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!managers || !managers.length">No managers found.</p>
+    </div>
+  
+    <div class="items">
+      <h1>
+        <label for="">Users in Your Company </label>
+        <label for=""><a [routerLink]="['/register']" [queryParams]="{name: user}" class="btncreate">Create User</a></label>
+      </h1>
+      <table *ngIf="users && users.length" border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>ManagerId</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.salary }}</td>
+            <td>{{ user.managerId }}</td>
+            <td class="btn">
+              <button type="button" class="view" (click)="navigateToView(user, 'user')">View</button>
+              <button type="button" class="delete" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!users || !users.length">No users found.</p>
+    </div>
+  </div>
+  

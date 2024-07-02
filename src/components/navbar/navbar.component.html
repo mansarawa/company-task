@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="item"><h1>ABC Software</h1></div>
+    <div class="item">
+        <ul>
+            <li><a routerLink="">Home</a></li>
+            <li  *ngIf="!isLoggedIn()"><a routerLink="register">Register</a></li>
+            <li *ngIf="!isLoggedIn()"><a routerLink="" class="btn">Login</a></li>
+            <li *ngIf="isLoggedIn()"><a (click)="logout()" class="btn">Logout</a></li>
+        </ul>
+    </div>
+</div>

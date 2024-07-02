@@ -1,0 +1,45 @@
+.container{
+    width: 100%;
+    min-height: 100%;
+}
+.ndashboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15%;
+    flex-direction: column;
+    text-align: center;
+}
+.ndashboard h1{
+    font-size: 50px;
+}
+.btndiv{
+    margin-top: 2%;
+    
+    width: 100%;
+}
+.btndiv a{
+    
+    text-decoration: none;
+}
+.btn{
+    margin: 1% 3% 0% 0%;
+    border: none;
+    padding: 15px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.footer{
+    text-align: center;
+    width: 100%;
+    align-items: center;
+
+    justify-content: center;
+    display: flex;
+    margin-top: 5%;
+}
