@@ -19,7 +19,7 @@ export class ViewComponent implements OnInit {
   adminUpdate: FormGroup;
   userUpdate: FormGroup;
   managerUpdate: FormGroup;
-
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -44,14 +44,18 @@ export class ViewComponent implements OnInit {
       role: [this.item.role, Validators.required]
     });
 
-    this.userUpdate = this.fb.group({
-      id: [this.item.id],
-      name: [this.item.name, Validators.required],
-      salary: [this.item.salary, Validators.required],
-      email: [this.item.email, [Validators.required, Validators.email]],
-      password: [this.item.password, Validators.required],
-      managerId: [this.item.managerId, Validators.required]
-    });
+
+  this.userUpdate = this.fb.group({
+    id: [this.item.id],
+    name: [this.item.name, Validators.required],
+    salary: [this.item.salary, Validators.required],
+    email: [this.item.email, [Validators.required, Validators.email]],
+    password: [this.item.password, Validators.required],
+    managerName: [this.item.managerName]  
+  });
+
+
+
   }
 
   adminSubmit() {
@@ -129,6 +133,7 @@ export class ViewComponent implements OnInit {
       this.adminUpdate.patchValue(this.item);
       this.managerUpdate.patchValue(this.item);
       this.userUpdate.patchValue(this.item);
+      
     });
   }
 

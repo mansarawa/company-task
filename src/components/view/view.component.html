@@ -77,9 +77,15 @@
       <input type="text" formControlName="salary" id="">
     </div>
     <div>
-      <label>ManagerId: </label>
-      <input type="text" formControlName="managerId" id="">
+      <label>Password:</label> 
+      <input type="text" formControlName="password" id="">
     </div>
+    <!-- <div>
+      <label for="managerName">Manager: </label>
+      <input type="text" formControlName="managerName" [disabled]="isDisable" id="managerName">
+    </div>
+     -->
+    
     <button type="button" class="btn" (click)="navigateToCompany()">Go Back</button>
     <button type="submit" class="btn">Update</button>
     </form>

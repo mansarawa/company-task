@@ -10,17 +10,17 @@ import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterModule, CommonModule, HttpClientModule,LoginComponent],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, HttpClientModule, LoginComponent],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
   name: string = '';
   adminRegister: FormGroup;
-  managerRegister:FormGroup;
-  userRegister:FormGroup;
-  company:string='company'
-
+  managerRegister: FormGroup;
+  userRegister: FormGroup;
+  company: string = 'company'
+  managers: any[] = [];
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -37,17 +37,19 @@ export class RegisterComponent {
     });
     this.managerRegister = this.fb.group({
       name: ['', Validators.required],
-      userId: ['', Validators.required],
+    
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
     this.userRegister = this.fb.group({
       name: ['', Validators.required],
       salary: ['', Validators.required],
-      managerId: ['', Validators.required],
+      // managerId: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      managerName: ['', Validators.required]
     });
+
   }
 
   adminSubmit() {
@@ -56,7 +58,9 @@ export class RegisterComponent {
       this.companyService.createAdmin(this.adminRegister.value).subscribe(
         response => {
           console.log('Form Submitted', response);
-          localStorage.setItem('admin',JSON.stringify(response.data))
+          localStorage.removeItem('user');
+          localStorage.removeItem('manager');
+          localStorage.setItem('admin', JSON.stringify(response.data))
           console.log(response.data)
           this.router.navigate(['company'])
           this.adminRegister.reset();
@@ -69,13 +73,15 @@ export class RegisterComponent {
   }
 
   managerSubmit() {
-   
+
     if (this.managerRegister.valid) {
-console.log("first")
+      console.log("first")
       this.companyService.createManager(this.managerRegister.value).subscribe(
         response => {
           console.log('Form Submitted', response);
-          localStorage.setItem('admin',JSON.stringify(response.data))
+          localStorage.removeItem('user');
+          localStorage.removeItem('admin');
+          localStorage.setItem('manager', JSON.stringify(response.data))
           console.log(response.data)
           this.router.navigate(['company'])
           this.managerRegister.reset();
@@ -88,21 +94,32 @@ console.log("first")
   }
 
   userSubmit() {
-    if (this.userRegister.valid) {
-      this.companyService.createUser(this.userRegister.value).subscribe(
-        response => {
-          console.log('Form Submitted', response);
-          localStorage.setItem('admin',JSON.stringify(response.data))
-          console.log(response.data)
-          this.router.navigate(['company'])
-          this.userRegister.reset();
-        },
-        error => {
-          console.error('Error:', error);
-        }
-      );
-    }
+    
+    
+      if (this.userRegister.valid) {
+        console.log('Form is valid. Submitting...');
+    
+        this.companyService.createUser(this.userRegister.value).subscribe(
+          response => {
+            console.log('Form Submitted', response);
+            localStorage.removeItem('user');
+          localStorage.removeItem('manager');
+            localStorage.setItem('manager', JSON.stringify(response.data));
+            console.log(response.data);
+            this.router.navigate(['company']);
+            this.userRegister.reset();
+          },
+          error => {
+            console.error('Error:', error);
+          }
+        );
+      } else {
+        console.log('Form is invalid. Cannot submit.');
+      }
+    
+    
   }
+  
 
   navigateToLogin() {
     this.router.navigate(['login']);
@@ -113,6 +130,14 @@ console.log("first")
       const name = params['name'];
       this.name = name !== null ? name : '';
     });
+    this.companyService.getMangers().subscribe(
+      data => {
+        this.managers = data.manager
+        console.log(this.managers)
+      },
+      error => console.error('Error fetching admins', error)
+    );
+
   }
- 
 }
+

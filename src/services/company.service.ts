@@ -75,4 +75,7 @@ export class CompanyService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(`${this.apiUrl}/userlogin`, userData, { headers });
   }
+  rPass(userData:any):Observable<any>{
+    return this.http.post<any>(`${this.apiUrl}/sendMail`, userData);
+  }
 }

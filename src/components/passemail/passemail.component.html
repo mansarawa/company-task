@@ -1,0 +1,14 @@
+<div class="container">
+<form [formGroup]="resetForm" (ngSubmit)="onSubmit()" >
+    <h1>Reset Password</h1>
+    <div class="items">
+        <label for="email">Email</label>
+        <input type="email" name="" formControlName="email" id="">
+        <div *ngIf="adminForm.get('email')?.invalid && adminForm.get('email')?.touched">Email is required</div>
+    </div>
+   
+   
+    <button type="submit" class="btn">Submit</button><br>
+    
+</form>
+</div>

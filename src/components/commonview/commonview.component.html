@@ -20,9 +20,14 @@
           <label >{{manager.password}}</label>
         </div>
         <div>
-            <label>User Id:</label>
-            <label > {{manager.userId}}</label>
+            <label>Users:</label>
+            <section *ngFor="let user of result"> 
+              <div *ngIf="user.managerName === manager.name">
+                <label>{{user.name}}</label>
+              </div>
+             </section>
           </div>
+          
           <div class="btndiv">
         <button name="button" class="btn" (click)="navigateToCompany()">Go Back</button>
         <button name="submit" class="btn" (click)="navigateToView(manager,'manager')">Update</button>
@@ -33,7 +38,7 @@
     <h1>User</h1>
    
       <div>
-        <label>Name:{{user.name}}</label> 
+        <label>Name:</label> 
         <label >{{user.name}}</label>
       </div>
       <div>
@@ -45,9 +50,10 @@
         <label >{{user.salary}}</label>
       </div>
       <div>
-        <label>ManagerId: </label>
-        <label >{{user.managerId}}</label>
+        <label>Manager Name:</label>
+        <label > {{user.managerName}}</label>
       </div>
+      
       <button name="button" class="btn" (click)="navigateToCompany()">Go Back</button>
       <button name="submit" class="btn" (click)="navigateToView(user,'user')">Update</button>
      

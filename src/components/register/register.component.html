@@ -61,49 +61,44 @@
           <input type="password" name="" formControlName="password" id="">
           <div *ngIf="managerRegister.get('password')?.invalid && managerRegister.get('password')?.touched">Password is required</div>
       </div>
-     <div class="items">
-          <label for="email">userId</label>
-          <input type="text" name="" formControlName="userId" id="">
-          <div *ngIf="managerRegister.get('userID')?.invalid && managerRegister.get('userId')?.touched">Email is required</div>
-      </div>
+     
       <button type="submit" class="btn">Register</button><br>
       
   </form>
   
-</div>
-<!-- user -->
-<div class="container"  *ngIf="name === 'user'">
-  
+</div><!-- user -->
+<div class="container" *ngIf="name === 'user'">
   <form [formGroup]="userRegister" (ngSubmit)="userSubmit()">
-      <h1>Register As User</h1>
-      <div class="items">
-        <label for="email">Name</label>
-        <input type="text" name="" formControlName="name" id="">
-        <div *ngIf="userRegister.get('name')?.invalid && userRegister.get('name')?.touched">Email is required</div>
-    </div>
-      <div class="items">
-          <label for="email">Email</label>
-          <input type="email" name="" formControlName="email" id="">
-          <div *ngIf="userRegister.get('email')?.invalid && userRegister.get('email')?.touched">Email is required</div>
-      </div>
-
-      <div class="items">
-          <label for="password">Password</label>
-          <input type="password" name="" formControlName="password" id="">
-          <div *ngIf="userRegister.get('password')?.invalid && userRegister.get('password')?.touched">Password is required</div>
-      </div>
-      <div class="items">
-        <label for="email">Salary</label>
-        <input type="text" name="" formControlName="salary" id="">
-        <div *ngIf="userRegister.get('salary')?.invalid && userRegister.get('salary')?.touched">Email is required</div>
+    <h1>Register As User</h1>
+    <div class="items">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" id="name">
+      <div *ngIf="userRegister.get('name')?.invalid && userRegister.get('name')?.touched">Name is required</div>
     </div>
     <div class="items">
-      <label for="email">managerId</label>
-      <input type="text" name="" formControlName="managerId" id="">
-      <div *ngIf="userRegister.get('managerId')?.invalid && userRegister.get('managerId')?.touched">Email is required</div>
-  </div>
-      <button type="submit" class="btn">Register</button><br>
-      
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" id="email">
+      <div *ngIf="userRegister.get('email')?.invalid && userRegister.get('email')?.touched">Email is required</div>
+    </div>
+    <div class="items">
+      <label for="password">Password</label>
+      <input type="password" formControlName="password" id="password">
+      <div *ngIf="userRegister.get('password')?.invalid && userRegister.get('password')?.touched">Password is required</div>
+    </div>
+    <div class="items">
+      <label for="salary">Salary</label>
+      <input type="text" formControlName="salary" id="salary">
+      <div *ngIf="userRegister.get('salary')?.invalid && userRegister.get('salary')?.touched">Salary is required</div>
+    </div>
+    <div class="items">
+      <label for="managerId">Manager</label>
+      <select formControlName="managerName" id="managerName">
+        <option value="" disabled selected hidden>Choose a Manager</option>
+        <option *ngFor="let manager of managers" [value]="manager.name">{{ manager.name }}</option>
+      </select>
+      <div *ngIf="userRegister.get('managerName')?.invalid && userRegister.get('managerName')?.touched">Manager is required</div>
+    </div>
+    <button type="submit" class="btn">Register</button>
   </form>
   
 </div>
